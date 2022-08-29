@@ -1,0 +1,82 @@
+1. what is inheritance and composition
+inheritance is-a relation
+composition has-a relation
+
+2. why prefer composition over inheritance
+a) composition can select the field instance in run time, inheritance only in compiling time
+b) composition can select multiple impl of the same interface, however, inheritance does not support multi-inheritance
+c) inheritance update parent class, for example, add the method name, subclass need to be updated
+d) easy for testing
+for inheritance
+tree A->B->C->D need to unit test each one, in case of, middle one updated inherited method
+for composition
+can test separately and support mocking
+
+3. dependency injection
+https://stackoverflow.com/questions/130794/what-is-dependency-injection
+
+Dependency injection is basically providing the objects that an object needs (its dependencies)
+instead of having it construct them itself.
+It's a very useful technique for testing, since it allows dependencies to be mocked or stubbed out.
+
+4. What is the most important object oriented programming principle for complex system
+Encapsulation, Abstraction, Inheritance and Polymorphism.
+https://lilly021.com/four-basic-principles-of-object-oriented-programming/
+
+5. cases not suitable for GC
+a) serious limited memory with delayed GC
+b) cache does not need to be GCed
+c) CPU contention leads to STW system cannot have delayed
+
+6. difference heap and stack
+a) heap for object, stack for local variable
+b) heap slow shared by all thread, stack is faster as it exclusive for each thread
+c) heap OOM, stack over flow
+d) heap dynamic allocation, stack FILO
+
+https://www.programmerinterview.com/data-structures/difference-between-stack-and-heap/
+
+7. thread and process
+Both processes and threads are independent sequences of execution.
+The typical difference is that threads (of the same process) run in a shared memory space,
+while processes run in separate memory spaces.
+
+8. thread communication
+shared memory, wait() notify() and notifyAll()
+
+9. process communication
+shared files, shared memory, signal, message queue, socket, pipe
+https://opensource.com/article/19/4/interprocess-communication-linux-storage
+
+10. overriding and overloading
+When two or more methods in the same class have the same name but different parameters, it’s called Overloading.
+When the method signature (name and parameters) are the same in the superclass and the child class, it’s called Overriding.
+
+11. What's the difference about user mode and kernal mode?
+In Kernel mode, the executing code has complete and unrestricted access to the underlying hardware.
+It can execute any CPU instruction and reference any memory address.
+Kernel mode is generally reserved for the lowest-level, most trusted functions of the operating system.
+Crashes in kernel mode are catastrophic; they will halt the entire PC.
+
+In User mode, the executing code has no ability to directly access hardware or reference memory.
+Code running in user mode must delegate to system APIs to access hardware or memory.
+Due to the protection afforded by this sort of isolation, crashes in user mode are always recoverable.
+Most of the code running on your computer will execute in user mode.
+
+12. What is swap space?
+Swap space in Linux is used when the amount of physical memory (RAM) is full.
+If the system needs more memory resources and the RAM is full,
+inactive pages in memory are moved to the swap space.
+While swap space can help machines with a small amount of RAM, it should not be considered a replacement for more RAM.
+
+13. What is virtual memory?
+VM takes the program addresses and maps to RAM address
+
+14. What is context switch? What cause will trigger it?
+The most common reasons for a context switch are:
+The time slice has elapsed.
+A thread with a higher priority has become ready to run.
+A running thread needs to wait.
+https://docs.microsoft.com/en-us/windows/win32/procthread/context-switches
+
+Switching CPU to another process requires a state saving of the current process and a state restore of different process
